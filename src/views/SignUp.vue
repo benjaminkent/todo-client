@@ -1,8 +1,8 @@
 <template lang="pug">
-  .signin-container
+  .signup-container
     form
       .header
-        h1 Log In
+        h1 Sign Up
         img.logo(src="../assets/logo.png")
       span.error(v-if="error")
         i.far.fa-exclamation-circle
@@ -11,61 +11,31 @@
         label.label(for="email") Enter your email
         input.input(v-model="email" type="email" id="email" placeholder="email@domain.com")
       .form-group
-        label.label(for="password") Enter your password
+        label.label(for="password") Create your password
         input.input(v-model="password" type="password" id="password" placeholder="password")
-      button.button(type="submit") Log In
-      router-link(to="/signup") Sign Up
+      .form-group
+        label.label(for="password_confirmation") Confirm your password
+        input.input(v-model="password_confirmation" type="password" id="password_confirmation" placeholder="confirm password")
+      button.button(type="submit") Sign Up
+      router-link(to="/") Log In
 </template>
-
 
 <script>
 export default {
-  name: 'signin',
+  name: 'signup',
   data() {
     return {
       email: '',
       password: '',
+      password_confirmation: '',
       error: ''
-    }
-  },
-  created() {
-    this.checkSignedIn()
-  },
-  updated() {
-    this.checkSignedIn()
-  },
-  methods: {
-    signin() {
-      this.$http.plain.post('/signin', { email: this.email, password: this.password })
-        .then(response => this.signinSuccessful(response))
-        .catch(error => this.signinFailed(error))
-    },
-    signinSuccessful(response) {
-      if (!response.data.csrf) {
-        this.signinFailed(response)
-        return
-      }
-      localStorage.csrf = response.data.csrf
-      localStorage.signedIn = true
-      this.error = ''
-      this.$router.replace('/todos')
-    },
-    signinFailed(error) {
-      this.error = (error.response && error.response.data && error.response.data.error) || ''
-      delete localStorage.csrf
-      delete localStorage.signedIn
-    },
-    checkSignedIn() {
-      if (localStorage.signedIn) {
-        this.$router.replace('/todos')
-      }
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.signin-container {
+.signup-container {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   display: flex;
   justify-content: center;
@@ -98,7 +68,7 @@ export default {
 
   form {
     width: 45%;
-    height: 35%;
+    height: 42%;
     margin-top: 150px;
     border-radius: 4px;
     padding: 20px;
