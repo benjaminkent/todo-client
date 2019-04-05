@@ -35,14 +35,14 @@ export default {
     this.checkSignedIn()
   },
   methods: {
-    signin() {
+    signIn() {
       this.$http.plain.post('/signin', { email: this.email, password: this.password })
-        .then(response => this.signinSuccessful(response))
-        .catch(error => this.signinFailed(error))
+        .then(response => this.signInSuccessful(response))
+        .catch(error => this.signInFailed(error))
     },
-    signinSuccessful(response) {
+    signInSuccessful(response) {
       if (!response.data.csrf) {
-        this.signinFailed(response)
+        this.signInFailed(response)
         return
       }
       localStorage.csrf = response.data.csrf
@@ -50,8 +50,8 @@ export default {
       this.error = ''
       this.$router.replace('/todos')
     },
-    signinFailed(error) {
-      this.error = (error.response && error.response.data && error.response.data.error) || ''
+    signInFailed(error) {
+      this.error = (error.response && error.response.data && error.response.data.error) || 'Something is afoot'
       delete localStorage.csrf
       delete localStorage.signedIn
     },

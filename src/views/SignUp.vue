@@ -30,6 +30,39 @@ export default {
       password_confirmation: '',
       error: ''
     }
+  },
+  created() {
+    this.checkSignedIn()
+  },
+  updated() {
+    this.checkSignedIn()
+  },
+  methods: {
+    signUp() {
+      this.$http.plain.post('/signup', { email: this.email, password: this.password, password_confirmation: this.password_confirmation })
+        .then(response => this.signUpSuccessful(response))
+        .catch(error => this.signupFailed(error))
+    },
+    signUpSuccessful(response) {
+      if (!response.data.csrf) {
+        this.signupFailed(response)
+        return
+      }
+      localStorage.csrf = response.data.csrf
+      localStorage.signedIn = true
+      this.error = ''
+      this.$router.replace('/todos')
+    },
+    signupFailed(error) {
+      this.error = (error.response && error.response.data && error.response.data.error) || 'Something is afoot'
+      delete localStorage.csrf
+      delete localStorage.signedIn
+    },
+    checkSignedIn() {
+      if (localStorage.signedIn) {
+        this.$router.replace('/todos')
+      }
+    }
   }
 }
 </script>
