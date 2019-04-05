@@ -1,7 +1,9 @@
 <template lang="pug">
   .signin-container
     form
-      h1 Log In
+      .header
+        h1 Log In
+        img.logo(src="../assets/logo.png")
       span.error(v-if="error")
         i.far.fa-exclamation-circle
         | {{ error }}
@@ -71,18 +73,26 @@ export default {
   height: 100vh;
   margin: 0;
   color: #0f0f0f;
-  // background-image: url("../assets/logo.png");
 
-  h1 {
-    font-size: 28px;
-  }
+  .header {
+    display: flex;
+    justify-content: space-between;
 
-  .error {
-    color: #ff4444;
-  }
+    .logo {
+      height: 70px;
+    }
 
-  .fa-exclamation-circle {
-    margin-right: 5px;
+    h1 {
+      font-size: 28px;
+    }
+
+    .error {
+      color: #ff4444;
+    }
+
+    .fa-exclamation-circle {
+      margin-right: 5px;
+    }
   }
 
   form {
