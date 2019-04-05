@@ -69,10 +69,11 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   display: flex;
   justify-content: center;
-  background-color: #13120010;
   height: 100vh;
   margin: 0;
   color: #0f0f0f;
+  background: #13120030;
+  background: linear-gradient(0deg, #2c3e50 0%, #42b983 100%);
 
   .header {
     display: flex;
