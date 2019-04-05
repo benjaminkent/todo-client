@@ -1,6 +1,6 @@
 <template lang="pug">
   .signup-container
-    form
+    form.form
       .header
         h1 Sign Up
         img.logo(src="../assets/logo.png")
@@ -66,10 +66,10 @@ export default {
     margin-right: 5px;
   }
 
-  form {
-    width: 45%;
-    height: 42%;
-    margin-top: 150px;
+  .form {
+    width: 250px;
+    height: 425px;
+    margin-top: 50px;
     border-radius: 4px;
     padding: 20px;
     display: flex;
@@ -122,6 +122,24 @@ export default {
 
   a:hover {
     color: #2c3e50;
+  }
+}
+
+@media (min-width: 600px) {
+  .signup-container {
+    .form {
+      width: 50%;
+      margin-top: 100px;
+    }
+  }
+}
+
+@media (min-width: 1000px) {
+  .signup-container {
+    .form {
+      width: 500px;
+      margin-top: 100px;
+    }
   }
 }
 </style>
