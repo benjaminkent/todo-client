@@ -31,6 +31,7 @@ export default {
   height: 100vh;
   margin: 0;
   color: #0f0f0f;
+  // background-image: url("../assets/logo.png");
 
   h1 {
     font-size: 28px;
@@ -43,7 +44,7 @@ export default {
   .fa-exclamation-circle {
     margin-right: 5px;
   }
-  
+
   form {
     width: 45%;
     height: 35%;
