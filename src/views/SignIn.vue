@@ -23,33 +23,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-form {
-  width: 45%;
-  height: 35%;
-  margin-top: 150px;
-  border-radius: 4px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  box-shadow: 0px 0px 5px 2px #13120050;
-}
-
-a {
-  margin-top: 30px;
-  text-decoration: none;
-  color: #42b983;
-  width: 60px;
-}
-
-a:hover {
-  color: #2c3e50;
-}
-
-h1 {
-  font-size: 28px;
-}
-
 .signin-container {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   display: flex;
@@ -58,48 +31,76 @@ h1 {
   height: 100vh;
   margin: 0;
   color: #0f0f0f;
-}
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  margin: 10px 0;
-}
+  h1 {
+    font-size: 28px;
+  }
 
-.input {
-  padding: 7px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  margin-top: 2px;
-  color: #42b983;
-  font-size: 14px;
-}
+  .error {
+    color: #ff4444;
+  }
 
-.input::placeholder {
-  color: #bbb;
-}
+  .fa-exclamation-circle {
+    margin-right: 5px;
+  }
+  
+  form {
+    width: 45%;
+    height: 35%;
+    margin-top: 150px;
+    border-radius: 4px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px 2px #13120050;
 
-.button {
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  font-size: 16px;
-  background-color: #42b983;
-  color: #fff;
-  cursor: pointer;
-}
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin: 10px 0;
 
-.button:hover {
-  background-color: #2c3e50;
-}
+      .input {
+        padding: 7px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        margin-top: 2px;
+        color: #42b983;
+        font-size: 14px;
+      }
 
-.error {
-  color: #ff4444;
-}
+      .input::placeholder {
+        color: #bbb;
+      }
+    }
 
-.fa-exclamation-circle {
-  margin-right: 5px;
+  }
+
+  .button {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #42b983;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background-color: #2c3e50;
+  }
+
+  a {
+    margin-top: 30px;
+    text-decoration: none;
+    color: #42b983;
+    width: 60px;
+  }
+
+  a:hover {
+    color: #2c3e50;
+  }
 }
 </style>
 
