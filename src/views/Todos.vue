@@ -1,8 +1,10 @@
 <template lang="pug">
   .todos-container
     .header
-      h1 things to do
-      i.fal.fa-clipboard-list
+      .title
+        h1 things to do
+        i.fal.fa-clipboard-list
+      button.sign-out(@click="signOut") Log Out
     span.error(v-if="error")
         i.far.fa-exclamation-circle
         | {{ error }}
@@ -77,6 +79,15 @@ export default {
       this.editedTodo = ''
       this.$http.secured.patch(`/todos/${todo.id}`, { todo: { title: todo.title } })
         .catch(error => this.setError(error, 'Cannot update To Do'))
+    },
+    signOut() {
+      this.$http.secured.delete('/signin')
+        .then(response => {
+          delete localStorage.csrf
+          delete localStorage.signedIn
+          this.$router.replace('/')
+        })
+        .catch(error => this.setError(error, 'Cannot log out, you live here now'))
     }
   },
   directives: {
@@ -106,17 +117,40 @@ export default {
 
   .header {
     display: flex;
+    justify-content: space-between;
+    width: 75%;
 
-    h1 {
-      margin: 0 0 20px 0;
+    .sign-out {
+      font-size: 20px;
+      color: #42b983;
+      margin-top: 7px;
+      border: none;
+      height: 22px;
+      background: transparent;
+      padding: 2px;
+      cursor: pointer;
     }
 
-    .fa-clipboard-list {
-      font-size: 34px;
-      margin-left: 7px;
-      color: #42b983;
+    .sign-out:hover {
+      color: #2c3e50;
+    }
+
+    .title {
+      display: flex;
+
+      h1 {
+        margin: 0 0 20px 0;
+        font-weight: 200;
+      }
+
+      .fa-clipboard-list {
+        font-size: 34px;
+        margin-left: 7px;
+        color: #42b983;
+      }
     }
   }
+
 
   .input-todo {
     padding: 7px 0;
