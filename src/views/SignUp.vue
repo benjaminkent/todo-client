@@ -1,6 +1,6 @@
 <template lang="pug">
   .signup-container
-    form.form
+    form.form(@submit.prevent="signUp")
       .header
         h1 Sign Up
         img.logo(src="../assets/logo.png")

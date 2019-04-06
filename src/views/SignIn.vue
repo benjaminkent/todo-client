@@ -1,6 +1,6 @@
 <template lang="pug">
   .signin-container
-    form.form
+    form.form(@submit.prevent="signIn")
       .header
         h1 Log In
         img.logo(src="../assets/logo.png")
@@ -13,7 +13,7 @@
       .form-group
         label.label(for="password") Enter your password
         input.input(v-model="password" type="password" id="password" placeholder="password")
-      button.button(type="submit") Log In
+      button.button(type="submit" @click="signIn") Log In
       router-link(to="/signup") Sign Up
 </template>
 

@@ -19,7 +19,6 @@
         div.todo(v-show="todo !== editedTodo" @dblclick="editTodo(todo)")
           label {{ todo.title }}
           i.fal.fa-trash-alt(@click="deleteTodo(todo)")
-        hr
         div.edit(v-show="todo === editedTodo")
           input.input-edit(
             v-todo-focus
@@ -40,7 +39,7 @@ export default {
       editedTodo: ''
     }
   },
-  create() {
+  created() {
     if (!localStorage.signedIn) {
       this.$router.replace('/')
     } else {
@@ -158,7 +157,7 @@ export default {
     border: 1px solid #ccc;
     margin-top: 20px;
     color: #42b983;
-    font-size: 14px;
+    font-size: 16px;
     width: 75%;
   }
 
@@ -168,9 +167,9 @@ export default {
   }
 
   ul {
-    margin: 30px 0 0 0;
+    margin: 20px 0 0 0;
     padding: 0;
-    width: 77%;
+    width: 75%;
 
     .list-item {
       list-style-type: none;
@@ -181,19 +180,13 @@ export default {
         cursor: pointer;
       }
 
-      hr {
-        border: .5px solid #42b98330;
-        margin-top: 3px;
-      }
-
       .input-edit {
         width: 100%;
-        padding: 7px 0;
+        padding: 5px 0;
         border-radius: 4px;
         border: 1px solid #ccc;
-        margin-top: 20px;
         color: #42b983;
-        font-size: 14px;
+        font-size: 16px;
       }
     }
 
@@ -209,6 +202,8 @@ export default {
     .todo {
       display: flex;
       justify-content: space-between;
+      border-bottom: 1px solid #42b98360;
+      padding-bottom: 3px;
     }
   }
 }
