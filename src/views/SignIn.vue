@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     signIn() {
-      this.$http.plain.post('/signin', { email: this.email, password: this.password })
+      this.axios.plain.post('/signin', { email: this.email, password: this.password })
         .then(response => this.signInSuccessful(response))
         .catch(error => this.signInFailed(error))
     },

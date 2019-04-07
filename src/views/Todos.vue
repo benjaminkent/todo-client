@@ -43,7 +43,7 @@ export default {
     if (!localStorage.signedIn) {
       this.$router.replace('/')
     } else {
-      this.$http.secured.get('/todos')
+      this.axios.secured.get('/todos')
         .then(response => { this.todos = response.data })
         .catch(error => this.setError(error, "Something is afoot"))
     }
@@ -57,7 +57,7 @@ export default {
       if (!value) {
         return
       }
-      this.$http.secured.post('/todos', { todo: { title: this.newTodo } })
+      this.axios.secured.post('/todos', { todo: { title: this.newTodo } })
         .then(response => {
           this.todos.push(response.data)
           this.newTodo= ''
@@ -65,7 +65,7 @@ export default {
         .catch(error => this.setError(error, 'Cannot create To Do, go ahead and be lazy..'))
     },
     deleteTodo(todo) {
-      this.$http.secured.delete(`/todos/${todo.id}`)
+      this.axios.secured.delete(`/todos/${todo.id}`)
         .then(response => {
           this.todos.splice(this.todos.indexOf(todo), 1)
         })
@@ -76,11 +76,11 @@ export default {
     },
     updateTodo(todo) {
       this.editedTodo = ''
-      this.$http.secured.patch(`/todos/${todo.id}`, { todo: { title: todo.title } })
+      this.axios.secured.patch(`/todos/${todo.id}`, { todo: { title: todo.title } })
         .catch(error => this.setError(error, 'Cannot update To Do'))
     },
     signOut() {
-      this.$http.secured.delete('/signin')
+      this.axios.secured.delete('/signin')
         .then(response => {
           delete localStorage.csrf
           delete localStorage.signedIn

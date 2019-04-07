@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     signUp() {
-      this.$http.plain.post('/signup', { email: this.email, password: this.password, password_confirmation: this.password_confirmation })
+      this.axios.plain.post('/signup', { email: this.email, password: this.password, password_confirmation: this.password_confirmation })
         .then(response => this.signUpSuccessful(response))
         .catch(error => this.signupFailed(error))
     },
